@@ -6,6 +6,11 @@ import { TransformInterceptor } from './common/interceptors/transform.intercepto
 import { AllExceptionsFilter } from './common/filters/all-exception.filter';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
+import { AccountModule } from './modules/account/account.module';
+import { ProductCategoryModule } from './modules/product-category/product-category.module';
+import { ProductFamilyModule } from './modules/product-family/product-family.module';
+import { LanguageModule } from './modules/language/language.module';
+import { ProductModule } from './modules/product/product.module';
 import EnvironmentVariables from './common/interfaces/configuration';
 
 @Module({
@@ -30,6 +35,11 @@ import EnvironmentVariables from './common/interfaces/configuration';
       },
       inject: [ConfigService],
     }),
+    AccountModule,
+    ProductModule,
+    LanguageModule,
+    ProductFamilyModule,
+    ProductCategoryModule,
   ],
   controllers: [AppController],
   providers: [
