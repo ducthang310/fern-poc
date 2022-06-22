@@ -3,10 +3,10 @@ import { Document, Schema as MongooseSchema } from 'mongoose';
 import { Product } from '../../product/schemas/product.schema';
 import { LanguageObject } from '../../../common/interfaces/common.interface';
 
-export type ProductFamilyDocument = ProductFamily & Document;
+export type CropDocument = Crop & Document;
 
 @Schema({ timestamps: true, collection: 'productFamilies' })
-export class ProductFamily {
+export class Crop {
   @Prop({
     type: MongooseSchema.Types.Mixed,
   })
@@ -25,4 +25,4 @@ export class ProductFamily {
   products: Product[];
 }
 
-export const ProductFamilySchema = SchemaFactory.createForClass(ProductFamily);
+export const CropSchema = SchemaFactory.createForClass(Crop);

@@ -7,10 +7,13 @@ import { AllExceptionsFilter } from './common/filters/all-exception.filter';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 import { AccountModule } from './modules/account/account.module';
-import { ProductCategoryModule } from './modules/product-category/product-category.module';
 import { ProductFamilyModule } from './modules/product-family/product-family.module';
 import { LanguageModule } from './modules/language/language.module';
 import { ProductModule } from './modules/product/product.module';
+import { ProductTypeModule } from './modules/product-type/product-type.module';
+import { ProductBrandModule } from './modules/product-brand/product-brand.module';
+import { ProductVariantModule } from './modules/product-variant/product-variant.module';
+import { CropModule } from './modules/crop/crop.module';
 import EnvironmentVariables from './common/interfaces/configuration';
 
 @Module({
@@ -39,7 +42,10 @@ import EnvironmentVariables from './common/interfaces/configuration';
     ProductModule,
     LanguageModule,
     ProductFamilyModule,
-    ProductCategoryModule,
+    ProductTypeModule,
+    ProductBrandModule,
+    ProductVariantModule,
+    CropModule,
   ],
   controllers: [AppController],
   providers: [

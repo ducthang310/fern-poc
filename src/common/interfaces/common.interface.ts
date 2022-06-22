@@ -14,6 +14,11 @@ export interface Language {
   nativeName: string;
 }
 
+export interface LanguageObject {
+  default: string;
+  [countryCode: string]: string;
+}
+
 export interface ErrorMessage {
   code?: string;
   message: string;

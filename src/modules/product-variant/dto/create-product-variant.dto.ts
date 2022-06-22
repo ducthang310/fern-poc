@@ -1,8 +1,8 @@
+import { ApiProperty } from '@nestjs/swagger';
 import { LanguageObject } from '../../../common/interfaces/common.interface';
 import { Product } from '../../product/schemas/product.schema';
-import { ApiProperty } from '@nestjs/swagger';
 
-export class CreateProductFamilyDto {
+export class CreateProductVariantDto {
   @ApiProperty({ example: { default: 'New name' } })
   name: LanguageObject;
 
