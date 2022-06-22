@@ -45,6 +45,32 @@ $ npm run start:dev
 $ npm run start:prod
 ```
 
+## Running migration
+
+```bash
+# Create a new migration
+$ ts-node migrations/index.ts new -n CreateCollectionAccounts
+# --OR
+npm run migrate:new -- -n CreateCollectionAccounts
+
+# Run all pending migration files
+$ ts-node migrations/index.ts up
+# --OR
+npm run migrate:up
+
+# Undo migrations
+## Undo Last
+$ ts-node migrations/index.ts down -l
+# --OR
+npm run migrate:down -- -l
+
+## Undo All
+$ ts-node migrations/index.ts down -a
+# --OR
+npm run migrate:down -- -a
+
+```
+
 ## Test
 
 ```bash

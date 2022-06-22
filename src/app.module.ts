@@ -34,6 +34,7 @@ import EnvironmentVariables from './common/interfaces/configuration';
         return {
           uri: connectionString,
           dbName: database,
+          autoCreate: false,
         };
       },
       inject: [ConfigService],
