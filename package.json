@@ -19,9 +19,12 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
-    "migrate:up": "ts-node migrations/index.ts up",
-    "migrate:down": "ts-node migrations/index.ts down",
-    "migrate:new": "ts-node migrations/index.ts new"
+    "migrate:up": "ts-node src/migrations/index.ts up",
+    "migrate:down": "ts-node src/migrations/index.ts down",
+    "migrate:new": "ts-node src/migrations/index.ts new",
+    "migrate:status": "ts-node src/migrations/index.ts status",
+    "seed": "ts-node src/seeders",
+    "seed:refresh": "ts-node src/seeders --refresh"
   },
   "dependencies": {
     "@nestjs/common": "^8.0.0",
@@ -54,6 +57,7 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
     "jest": "28.0.3",
+    "nestjs-seeder": "^0.2.0",
     "prettier": "^2.3.2",
     "source-map-support": "^0.5.20",
     "supertest": "^6.1.3",
