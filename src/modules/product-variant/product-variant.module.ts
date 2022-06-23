@@ -12,5 +12,6 @@ import { ProductVariant, ProductVariantSchema } from './schemas/product-variant.
   ],
   controllers: [ProductVariantController],
   providers: [ProductVariantService],
+  exports: [MongooseModule, ProductVariantService],
 })
 export class ProductVariantModule {}

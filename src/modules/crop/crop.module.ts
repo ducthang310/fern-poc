@@ -10,5 +10,6 @@ import { Crop, CropSchema } from './schemas/crop.schema';
   ],
   controllers: [CropController],
   providers: [CropService],
+  exports: [MongooseModule, CropService],
 })
 export class CropModule {}

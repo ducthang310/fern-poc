@@ -12,5 +12,6 @@ import { ProductBrand, ProductBrandSchema } from './schemas/product-brand.schema
   ],
   controllers: [ProductBrandController],
   providers: [ProductBrandService],
+  exports: [MongooseModule, ProductBrandService],
 })
 export class ProductBrandModule {}

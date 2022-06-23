@@ -12,5 +12,6 @@ import { ProductFamily, ProductFamilySchema } from './schemas/product-family.sch
   ],
   controllers: [ProductFamilyController],
   providers: [ProductFamilyService],
+  exports: [ProductFamilyService, MongooseModule],
 })
 export class ProductFamilyModule {}

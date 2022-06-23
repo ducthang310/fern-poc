@@ -5,24 +5,30 @@ import { LanguageObject } from '../../../common/interfaces/common.interface';
 import { ProductBrand } from '../../product-brand/schemas/product-brand.schema';
 import { ProductType } from '../../product-type/schemas/product-type.schema';
 import { ProductVariant } from '../../product-variant/schemas/product-variant.schema';
+import { Factory } from 'nestjs-seeder';
+import { Crop } from '../../crop/schemas/crop.schema';
 
 export type ProductDocument = Product & Document;
 
 @Schema({ timestamps: true })
 export class Product {
+  @Factory((faker) => ({ default: faker.commerce.productName() }))
   @Prop({
     type: MongooseSchema.Types.Mixed,
   })
   name: LanguageObject;
 
+  @Factory((faker) => ({ default: faker.lorem.paragraph() }))
   @Prop({
     type: MongooseSchema.Types.Mixed,
   })
   description: LanguageObject;
 
+  @Factory((faker) => faker.address.countryCode())
   @Prop()
   countryOfOrigin: string;
 
+  @Factory((faker) => faker.company.companyName())
   @Prop()
   manufacturerName: string;
 
@@ -42,7 +48,7 @@ export class Product {
   productFamilies: ProductFamily[];
 
   @Prop()
-  crops: string;
+  crops: Crop[];
 
   @Prop()
   productVariants: ProductVariant[];
@@ -50,12 +56,15 @@ export class Product {
   @Prop()
   mediaUrls: string[];
 
+  @Factory((faker) => faker.random.words())
   @Prop()
   fertiliserComposition: string;
 
+  @Factory((faker) => faker.random.arrayElement([true, false]))
   @Prop()
   isMostPopular: boolean;
 
+  @Factory((faker) => faker.random.arrayElement([true, false]))
   @Prop()
   active: boolean;
 }

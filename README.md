@@ -71,6 +71,14 @@ npm run migrate:down -- -a
 
 ```
 
+### Running seeder
+Details of declaration in [here](https://github.com/edwardanthony/nestjs-seeder)
+```bash
+# Run seeder
+npm run seed
+
+```
+
 ## Test
 
 ```bash

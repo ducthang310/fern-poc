@@ -2,36 +2,36 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { Seeder, DataFactory } from 'nestjs-seeder';
-import { ProductBrand } from '../modules/product-brand/schemas/product-brand.schema';
+import { ProductType } from '../modules/product-type/schemas/product-type.schema';
 
 @Injectable()
-export class ProductBrandsSeeder implements Seeder {
+export class ProductTypesSeeder implements Seeder {
   constructor(
-    @InjectModel(ProductBrand.name)
-    private readonly productBrandModel: Model<ProductBrand>,
+    @InjectModel(ProductType.name)
+    private readonly productTypeModel: Model<ProductType>,
   ) {}
 
   async seed(): Promise<any> {
-    // const items = DataFactory.createForClass(ProductBrand).generate(2);
-    const items: ProductBrand[] = [
+    // const items = DataFactory.createForClass(ProductType).generate(2);
+    const items: ProductType[] = [
       {
-        name: { default: 'Brand 1' },
+        name: { default: 'Type 1' },
         description: { default: 'Test description' },
         imageUrls: [],
         products: [],
       },
       {
-        name: { default: 'Brand 2' },
+        name: { default: 'Type 2' },
         description: { default: 'Test description' },
         imageUrls: [],
         products: [],
       },
     ];
 
-    return this.productBrandModel.insertMany(items);
+    return this.productTypeModel.insertMany(items);
   }
 
   async drop(): Promise<any> {
-    return this.productBrandModel.deleteMany({});
+    return this.productTypeModel.deleteMany({});
   }
 }
