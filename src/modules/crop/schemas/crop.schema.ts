@@ -1,7 +1,9 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document, Schema as MongooseSchema } from 'mongoose';
-import { Product } from '../../product/schemas/product.schema';
-import { LanguageObject } from '../../../common/interfaces/common.interface';
+import {
+  LanguageObject,
+  MasterLookup,
+} from '../../../common/interfaces/common.interface';
 
 export type CropDocument = Crop & Document;
 
@@ -12,17 +14,12 @@ export class Crop {
   })
   name: LanguageObject;
 
-  @Prop({
-    type: MongooseSchema.Types.Mixed,
-  })
-  description: LanguageObject;
-
   @Prop()
   imageUrls: string[];
 
   @Prop()
   // @Prop({ type: [{ type: MongooseSchema.Types.ObjectId, ref: 'Product' }] })
-  products: Product[];
+  products: MasterLookup[];
 }
 
 export const CropSchema = SchemaFactory.createForClass(Crop);

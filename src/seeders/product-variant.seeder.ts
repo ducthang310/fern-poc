@@ -12,21 +12,7 @@ export class ProductVariantsSeeder implements Seeder {
   ) {}
 
   async seed(): Promise<any> {
-    // const items = DataFactory.createForClass(ProductVariant).generate(2);
-    const items: ProductVariant[] = [
-      {
-        name: { default: 'Variant 1' },
-        description: { default: 'Test description' },
-        imageUrls: [],
-        products: [],
-      },
-      {
-        name: { default: 'Variant 2' },
-        description: { default: 'Test description' },
-        imageUrls: [],
-        products: [],
-      },
-    ];
+    const items = DataFactory.createForClass(ProductVariant).generate(3);
 
     return this.productVariantModel.insertMany(items);
   }

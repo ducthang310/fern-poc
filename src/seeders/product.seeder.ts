@@ -22,19 +22,44 @@ export class ProductsSeeder implements Seeder {
   ) {}
 
   async seed(): Promise<any> {
-    const brands = this.productBrandService.findAll();
-    const types = this.productTypeService.findAll();
-    const variants = this.productVariantService.findAll();
-    const families = this.productFamilyService.findAll();
-    const crops = this.cropService.findAll();
+    const brands = (await this.productBrandService.findAll()).map((item) => ({
+      ...item.name,
+      id: item._id,
+    }));
+    const types = (await this.productTypeService.findAll()).map((item) => ({
+      ...item.name,
+      id: item._id,
+    }));
+    // const variants = this.productVariantService.findAll();
+    const families = (await this.productFamilyService.findAll()).map(
+      (item) => ({
+        id: item._id,
+        name: item.name.en,
+      }),
+    );
+    const crops = (await this.cropService.findAll()).map((item) => ({
+      id: item._id,
+      name: item.name.en,
+    }));
 
-    const items = DataFactory.createForClass(Product).generate(5, {
-      productBrands: brands,
-      productTypes: types,
-      productVariants: variants,
-      productFamilies: families,
-      crops,
-    });
+    // const items = DataFactory.createForClass(Product).generate(5, {
+    //   productBrands: brands,
+    //   productTypes: types,
+    //   productFamily: families[0],
+    //   subFamily: families[1],
+    //   crops,
+    // });
+
+    const items = DataFactory.createForClass(Product)
+      .generate(5)
+      .map((item) => ({
+        ...item,
+        productBrands: brands,
+        productTypes: types,
+        productFamily: families[0],
+        subFamily: families[1],
+        crops,
+      }));
 
     return this.productModel.insertMany(items);
   }

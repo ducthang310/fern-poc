@@ -15,8 +15,22 @@ export interface Language {
 }
 
 export interface LanguageObject {
-  default: string;
+  en: string;
   [countryCode: string]: string;
+}
+
+export interface MasterLookupWithLocalization extends LanguageObject {
+  id: string;
+}
+
+export interface MasterLookup {
+  id: string;
+  name: string;
+}
+
+export interface CompactObject {
+  id: string;
+  name: string;
 }
 
 export interface ErrorMessage {

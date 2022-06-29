@@ -1,7 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document, Schema as MongooseSchema } from 'mongoose';
-import { Product } from '../../product/schemas/product.schema';
-import { LanguageObject } from '../../../common/interfaces/common.interface';
+import { LanguageObject, MasterLookup } from '../../../common/interfaces/common.interface';
 import { Factory } from 'nestjs-seeder';
 
 export type ProductBrandDocument = ProductBrand & Document;
@@ -25,7 +24,7 @@ export class ProductBrand {
 
   @Prop()
   // @Prop({ type: [{ type: MongooseSchema.Types.ObjectId, ref: 'Product' }] })
-  products?: Product[];
+  products?: MasterLookup[];
 }
 
 export const ProductBrandSchema = SchemaFactory.createForClass(ProductBrand);

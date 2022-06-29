@@ -34,6 +34,7 @@
     "@nestjs/platform-express": "^8.0.0",
     "@nestjs/swagger": "^5.2.1",
     "dotenv": "^16.0.1",
+    "faker": "^6.6.6",
     "lodash": "^4.17.21",
     "mongo-migrate-ts": "^1.1.1",
     "mongoose": "^6.4.0",

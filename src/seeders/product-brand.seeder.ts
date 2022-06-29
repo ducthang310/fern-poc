@@ -15,14 +15,20 @@ export class ProductBrandsSeeder implements Seeder {
     // const items = DataFactory.createForClass(ProductBrand).generate(2);
     const items: ProductBrand[] = [
       {
-        name: { default: 'Brand 1' },
-        description: { default: 'Test description' },
+        name: { en: 'Brand 1' },
+        description: { en: 'Test description' },
         imageUrls: [],
         products: [],
       },
       {
-        name: { default: 'Brand 2' },
-        description: { default: 'Test description' },
+        name: { en: 'Brand 2' },
+        description: { en: 'Test description' },
+        imageUrls: [],
+        products: [],
+      },
+      {
+        name: { en: 'Brand 3' },
+        description: { en: 'Test description' },
         imageUrls: [],
         products: [],
       },

@@ -15,14 +15,20 @@ export class ProductFamiliesSeeder implements Seeder {
     // const items = DataFactory.createForClass(ProductFamily).generate(2);
     const items: ProductFamily[] = [
       {
-        name: { default: 'Family 1' },
-        description: { default: 'Test description' },
+        name: { en: 'Family 1' },
+        description: { en: 'Test description' },
         imageUrls: [],
         products: [],
       },
       {
-        name: { default: 'Family 2' },
-        description: { default: 'Test description' },
+        name: { en: 'Family 2' },
+        description: { en: 'Test description' },
+        imageUrls: [],
+        products: [],
+      },
+      {
+        name: { en: 'Family 3' },
+        description: { en: 'Test description' },
         imageUrls: [],
         products: [],
       },

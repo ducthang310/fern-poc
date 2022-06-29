@@ -1,28 +1,41 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Document, Schema as MongooseSchema } from 'mongoose';
-import { Product } from '../../product/schemas/product.schema';
-import { LanguageObject } from '../../../common/interfaces/common.interface';
+import { Document } from 'mongoose';
+import { Factory } from 'nestjs-seeder';
 
 export type ProductVariantDocument = ProductVariant & Document;
 
 @Schema({ timestamps: true, collection: 'productVariants' })
 export class ProductVariant {
-  @Prop({
-    type: MongooseSchema.Types.Mixed,
-  })
-  name: LanguageObject;
+  @Factory((faker) => faker.random.arrayElement([40, 50, 60]))
+  @Prop()
+  maxPrice: number;
 
-  @Prop({
-    type: MongooseSchema.Types.Mixed,
-  })
-  description: LanguageObject;
+  @Factory((faker) => faker.random.arrayElement([10, 20, 30]))
+  @Prop()
+  minPrice: number;
+
+  @Factory((faker) => faker.random.words())
+  @Prop()
+  sku: string;
+
+  @Factory((faker) => faker.random.words())
+  @Prop()
+  volume: string;
+
+  @Factory((faker) => faker.random.words())
+  @Prop()
+  packaging: string;
+
+  @Factory((faker) => faker.random.words())
+  @Prop()
+  internalId: string;
 
   @Prop()
   imageUrls: string[];
 
+  @Factory((faker) => faker.random.arrayElement([true, false]))
   @Prop()
-  // @Prop({ type: [{ type: MongooseSchema.Types.ObjectId, ref: 'Product' }] })
-  products: Product[];
+  active: boolean;
 }
 
 export const ProductVariantSchema = SchemaFactory.createForClass(ProductVariant);
