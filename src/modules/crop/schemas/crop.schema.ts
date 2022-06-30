@@ -19,7 +19,7 @@ export class Crop {
 
   @Prop()
   // @Prop({ type: [{ type: MongooseSchema.Types.ObjectId, ref: 'Product' }] })
-  products: MasterLookup[];
+  products: string[];
 }
 
 export const CropSchema = SchemaFactory.createForClass(Crop);

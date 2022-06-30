@@ -37,4 +37,8 @@ export class ProductFamilyService {
   remove(id: number) {
     return `This action removes a #${id} productFamily`;
   }
+
+  updateMany(data: { products: any[] }) {
+    return this.productFamilyModel.updateMany({}, data).exec();
+  }
 }

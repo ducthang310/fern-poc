@@ -34,4 +34,8 @@ export class ProductBrandService {
   remove(id: number) {
     return `This action removes a #${id} productBrand`;
   }
+
+  updateMany(data: { products: any[] }) {
+    return this.productBrandModel.updateMany({}, data).exec();
+  }
 }

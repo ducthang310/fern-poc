@@ -1,30 +1,25 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Document, Schema as MongooseSchema } from 'mongoose';
-import {
-  LanguageObject,
-  MasterLookup,
-} from '../../../common/interfaces/common.interface';
+import { Document } from 'mongoose';
+import { Factory } from 'nestjs-seeder';
 
 export type ProductTypeDocument = ProductType & Document;
 
 @Schema({ timestamps: true, collection: 'productTypes' })
 export class ProductType {
-  @Prop({
-    type: MongooseSchema.Types.Mixed,
-  })
-  name: LanguageObject;
+  @Factory((faker) => faker.company.companyName())
+  @Prop()
+  name: string;
 
-  @Prop({
-    type: MongooseSchema.Types.Mixed,
-  })
-  description: LanguageObject;
+  @Factory((faker) => faker.lorem.paragraph())
+  @Prop()
+  description: string;
 
   @Prop()
   imageUrls: string[];
 
   @Prop()
   // @Prop({ type: [{ type: MongooseSchema.Types.ObjectId, ref: 'Product' }] })
-  products: MasterLookup[];
+  products: string[];
 }
 
 export const ProductTypeSchema = SchemaFactory.createForClass(ProductType);

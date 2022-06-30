@@ -46,3 +46,9 @@ export interface BaseApiResponse<T> {
 export interface ObjectMapper<T> {
   [key: string]: T;
 }
+
+export enum EntityStatus {
+  ACTIVE = 'active',
+  INACTIVE = 'active',
+  APPROVED = 'approved',
+}

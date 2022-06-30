@@ -12,29 +12,31 @@ import {
 export class SubFamilyService {
   constructor(
     @InjectModel(SubFamily.name)
-    private productFamilyModel: Model<SubFamilyDocument>,
+    private subFamilyModel: Model<SubFamilyDocument>,
   ) {}
 
   create(createSubFamilyDto: CreateSubFamilyDto) {
-    const createdSubFamily = new this.productFamilyModel(
-      createSubFamilyDto,
-    );
+    const createdSubFamily = new this.subFamilyModel(createSubFamilyDto);
     return createdSubFamily.save();
   }
 
   findAll() {
-    return this.productFamilyModel.find().exec();
+    return this.subFamilyModel.find().exec();
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} productFamily`;
+    return `This action returns a #${id} subFamily`;
   }
 
   update(id: number, updateSubFamilyDto: UpdateSubFamilyDto) {
-    return `This action updates a #${id} productFamily`;
+    return `This action updates a #${id} subFamily`;
   }
 
   remove(id: number) {
-    return `This action removes a #${id} productFamily`;
+    return `This action removes a #${id} subFamily`;
+  }
+
+  updateMany(data: { products: any[] }) {
+    return this.subFamilyModel.updateMany({}, data).exec();
   }
 }

@@ -9,6 +9,7 @@ import { ProductVariantService } from '../modules/product-variant/services/produ
 import { ProductFamilyService } from '../modules/product-family/services/product-family.service';
 import { CropService } from '../modules/crop/services/crop.service';
 import { SubFamilyService } from '../modules/sub-family/services/sub-family.service';
+import { ProductService } from '../modules/product/services/product.service';
 
 @Injectable()
 export class ProductsSeeder implements Seeder {
@@ -21,40 +22,39 @@ export class ProductsSeeder implements Seeder {
     private readonly productFamilyService: ProductFamilyService,
     private readonly subFamilyService: SubFamilyService,
     private readonly cropService: CropService,
+    private readonly productService: ProductService,
   ) {}
 
   async seed(): Promise<any> {
-    const brands = (await this.productBrandService.findAll()).map((item) => ({
-      ...item.name,
+    const allBrands = await this.productBrandService.findAll();
+    const brands = allBrands.map((item) => ({
       id: item._id,
+      name: item.name,
     }));
-    const types = (await this.productTypeService.findAll()).map((item) => ({
-      ...item.name,
+
+    const allTypes = await this.productTypeService.findAll();
+    const types = allTypes.map((item) => ({
       id: item._id,
+      name: item.name,
     }));
-    // const variants = this.productVariantService.findAll();
-    const families = (await this.productFamilyService.findAll()).map(
-      (item) => ({
-        id: item._id,
-        name: item.name.en,
-      }),
-    );
-    const subFamilies = (await this.subFamilyService.findAll()).map((item) => ({
-      id: item._id,
-      name: item.name.en,
-    }));
-    const crops = (await this.cropService.findAll()).map((item) => ({
+
+    const allFamilies = await this.productFamilyService.findAll();
+    const families = allFamilies.map((item) => ({
       id: item._id,
       name: item.name.en,
     }));
 
-    // const items = DataFactory.createForClass(Product).generate(5, {
-    //   productBrands: brands,
-    //   productTypes: types,
-    //   productFamily: families[0],
-    //   subFamily: families[1],
-    //   crops,
-    // });
+    const allSubFamilies = await this.subFamilyService.findAll();
+    const subFamilies = allSubFamilies.map((item) => ({
+      id: item._id,
+      name: item.name.en,
+    }));
+
+    const allCrops = await this.cropService.findAll();
+    const crops = allCrops.map((item) => ({
+      id: item._id,
+      name: item.name.en,
+    }));
 
     const items = DataFactory.createForClass(Product)
       .generate(5)
@@ -63,11 +63,19 @@ export class ProductsSeeder implements Seeder {
         productBrands: brands,
         productTypes: types,
         productFamily: families[0],
-        subFamily: subFamilies[1],
+        subFamily: subFamilies[0],
         crops: crops,
       }));
 
-    return this.productModel.insertMany(items);
+    await this.productModel.insertMany(items);
+    const allProducts = await this.productService.findAll();
+    const productIds = allProducts.map((item) => item._id);
+    await this.productBrandService.updateMany({ products: productIds });
+    await this.productTypeService.updateMany({ products: productIds });
+    await this.productFamilyService.updateMany({ products: productIds });
+    await this.subFamilyService.updateMany({ products: productIds });
+    await this.cropService.updateMany({ products: productIds });
+    return true;
   }
 
   async drop(): Promise<any> {

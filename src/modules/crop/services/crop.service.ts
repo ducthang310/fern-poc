@@ -32,4 +32,8 @@ export class CropService {
   remove(id: number) {
     return `This action removes a #${id} crop`;
   }
+
+  updateMany(data: { products: any[] }) {
+    return this.cropModel.updateMany({}, data).exec();
+  }
 }

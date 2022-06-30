@@ -35,4 +35,8 @@ export class ProductTypeService {
   remove(id: number) {
     return `This action removes a #${id} productType`;
   }
+
+  updateMany(data: { products: any[] }) {
+    return this.productTypeModel.updateMany({}, data).exec();
+  }
 }

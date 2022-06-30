@@ -1,9 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document, Schema as MongooseSchema } from 'mongoose';
-import {
-  LanguageObject,
-  MasterLookup,
-} from '../../../common/interfaces/common.interface';
+import { LanguageObject } from '../../../common/interfaces/common.interface';
 
 export type ProductFamilyDocument = ProductFamily & Document;
 
@@ -24,7 +21,7 @@ export class ProductFamily {
 
   @Prop()
   // @Prop({ type: [{ type: MongooseSchema.Types.ObjectId, ref: 'Product' }] })
-  products: MasterLookup[];
+  products: string[];
 }
 
 export const ProductFamilySchema = SchemaFactory.createForClass(ProductFamily);
