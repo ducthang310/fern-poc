@@ -5,14 +5,19 @@ import {
   MasterLookup,
 } from '../../../common/interfaces/common.interface';
 
-export type CropDocument = Crop & Document;
+export type SubFamilyDocument = SubFamily & Document;
 
-@Schema({ timestamps: true, collection: 'crops' })
-export class Crop {
+@Schema({ timestamps: true, collection: 'subFamilies' })
+export class SubFamily {
   @Prop({
     type: MongooseSchema.Types.Mixed,
   })
   name: LanguageObject;
+
+  @Prop({
+    type: MongooseSchema.Types.Mixed,
+  })
+  description: LanguageObject;
 
   @Prop()
   imageUrls: string[];
@@ -22,4 +27,4 @@ export class Crop {
   products: MasterLookup[];
 }
 
-export const CropSchema = SchemaFactory.createForClass(Crop);
+export const SubFamilySchema = SchemaFactory.createForClass(SubFamily);

@@ -8,6 +8,7 @@ import { ProductTypeService } from '../modules/product-type/services/product-typ
 import { ProductVariantService } from '../modules/product-variant/services/product-variant.service';
 import { ProductFamilyService } from '../modules/product-family/services/product-family.service';
 import { CropService } from '../modules/crop/services/crop.service';
+import { SubFamilyService } from '../modules/sub-family/services/sub-family.service';
 
 @Injectable()
 export class ProductsSeeder implements Seeder {
@@ -18,6 +19,7 @@ export class ProductsSeeder implements Seeder {
     private readonly productTypeService: ProductTypeService,
     private readonly productVariantService: ProductVariantService,
     private readonly productFamilyService: ProductFamilyService,
+    private readonly subFamilyService: SubFamilyService,
     private readonly cropService: CropService,
   ) {}
 
@@ -37,6 +39,10 @@ export class ProductsSeeder implements Seeder {
         name: item.name.en,
       }),
     );
+    const subFamilies = (await this.subFamilyService.findAll()).map((item) => ({
+      id: item._id,
+      name: item.name.en,
+    }));
     const crops = (await this.cropService.findAll()).map((item) => ({
       id: item._id,
       name: item.name.en,
@@ -57,8 +63,8 @@ export class ProductsSeeder implements Seeder {
         productBrands: brands,
         productTypes: types,
         productFamily: families[0],
-        subFamily: families[1],
-        crops,
+        subFamily: subFamilies[1],
+        crops: crops,
       }));
 
     return this.productModel.insertMany(items);
