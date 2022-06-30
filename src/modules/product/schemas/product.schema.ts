@@ -13,13 +13,13 @@ export type ProductDocument = Product & Document;
 
 @Schema({ timestamps: true })
 export class Product {
-  @Factory((faker) => ({ default: faker.commerce.productName() }))
+  @Factory((faker) => ({ en: faker.commerce.productName() }))
   @Prop({
     type: MongooseSchema.Types.Mixed,
   })
   name: LanguageObject;
 
-  @Factory((faker) => ({ default: faker.lorem.paragraph() }))
+  @Factory((faker) => ({ en: faker.lorem.paragraph() }))
   @Prop({
     type: MongooseSchema.Types.Mixed,
   })

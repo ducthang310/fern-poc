@@ -7,13 +7,13 @@ export type ProductBrandDocument = ProductBrand & Document;
 
 @Schema({ timestamps: true, collection: 'productBrands' })
 export class ProductBrand {
-  @Factory((faker) => ({ default: faker.company.companyName() }))
+  @Factory((faker) => ({ en: faker.company.companyName() }))
   @Prop({
     type: MongooseSchema.Types.Mixed,
   })
   name: LanguageObject;
 
-  @Factory((faker) => ({ default: faker.lorem.paragraph() }))
+  @Factory((faker) => ({ en: faker.lorem.paragraph() }))
   @Prop({
     type: MongooseSchema.Types.Mixed,
   })
