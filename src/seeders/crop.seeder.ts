@@ -1,8 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { Seeder, DataFactory } from 'nestjs-seeder';
+import { Seeder } from 'nestjs-seeder';
 import { Crop } from '../modules/crop/schemas/crop.schema';
+import { EntityStatus } from '../common/interfaces/common.interface';
 
 @Injectable()
 export class CropsSeeder implements Seeder {
@@ -18,16 +19,19 @@ export class CropsSeeder implements Seeder {
         name: { en: 'Crop 1' },
         imageUrls: [],
         products: [],
+        status: EntityStatus.ACTIVE,
       },
       {
         name: { en: 'Crop 2' },
         imageUrls: [],
         products: [],
+        status: EntityStatus.ACTIVE,
       },
       {
         name: { en: 'Crop 3' },
         imageUrls: [],
         products: [],
+        status: EntityStatus.ACTIVE,
       },
     ];
 

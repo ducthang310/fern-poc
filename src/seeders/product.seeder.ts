@@ -5,7 +5,6 @@ import { Seeder, DataFactory } from 'nestjs-seeder';
 import { Product } from '../modules/product/schemas/product.schema';
 import { ProductBrandService } from '../modules/product-brand/services/product-brand.service';
 import { ProductTypeService } from '../modules/product-type/services/product-type.service';
-import { ProductVariantService } from '../modules/product-variant/services/product-variant.service';
 import { ProductFamilyService } from '../modules/product-family/services/product-family.service';
 import { CropService } from '../modules/crop/services/crop.service';
 import { SubFamilyService } from '../modules/sub-family/services/sub-family.service';
@@ -18,7 +17,6 @@ export class ProductsSeeder implements Seeder {
     private readonly productModel: Model<Product>,
     private readonly productBrandService: ProductBrandService,
     private readonly productTypeService: ProductTypeService,
-    private readonly productVariantService: ProductVariantService,
     private readonly productFamilyService: ProductFamilyService,
     private readonly subFamilyService: SubFamilyService,
     private readonly cropService: CropService,
@@ -62,8 +60,8 @@ export class ProductsSeeder implements Seeder {
         ...item,
         productBrands: brands,
         productTypes: types,
-        productFamily: families[0],
-        subFamily: subFamilies[0],
+        productFamilies: families,
+        subFamilies: subFamilies,
         crops: crops,
       }));
 

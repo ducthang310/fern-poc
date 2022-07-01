@@ -1,6 +1,7 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document, Schema as MongooseSchema } from 'mongoose';
-import { LanguageObject } from '../../../common/interfaces/common.interface';
+import { EntityStatus, LocalisedValue } from '../../../common/interfaces/common.interface';
+import { Factory } from 'nestjs-seeder';
 
 export type ProductFamilyDocument = ProductFamily & Document;
 
@@ -9,12 +10,12 @@ export class ProductFamily {
   @Prop({
     type: MongooseSchema.Types.Mixed,
   })
-  name: LanguageObject;
+  name: LocalisedValue;
 
   @Prop({
     type: MongooseSchema.Types.Mixed,
   })
-  description: LanguageObject;
+  description: LocalisedValue;
 
   @Prop()
   imageUrls: string[];
@@ -22,6 +23,16 @@ export class ProductFamily {
   @Prop()
   // @Prop({ type: [{ type: MongooseSchema.Types.ObjectId, ref: 'Product' }] })
   products: string[];
+
+  @Factory((faker) =>
+    faker.random.arrayElement([
+      EntityStatus.ACTIVE,
+      EntityStatus.INACTIVE,
+      EntityStatus.APPROVED,
+    ]),
+  )
+  @Prop()
+  status: EntityStatus;
 }
 
 export const ProductFamilySchema = SchemaFactory.createForClass(ProductFamily);

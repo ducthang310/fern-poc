@@ -2,21 +2,15 @@ import { seeder } from 'nestjs-seeder';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import EnvironmentVariables from '../common/interfaces/configuration';
-import {
-  ProductBrand,
-  ProductBrandSchema,
-} from '../modules/product-brand/schemas/product-brand.schema';
 import { ProductBrandsSeeder } from './product-brand.seeder';
 import { ProductFamiliesSeeder } from './product-family.seeder';
 import { ProductTypesSeeder } from './product-type.seeder';
-import { ProductVariantsSeeder } from './product-variant.seeder';
 import { CropsSeeder } from './crop.seeder';
 import { ProductsSeeder } from './product.seeder';
 import { ProductModule } from '../modules/product/product.module';
 import { ProductFamilyModule } from '../modules/product-family/product-family.module';
 import { ProductTypeModule } from '../modules/product-type/product-type.module';
 import { ProductBrandModule } from '../modules/product-brand/product-brand.module';
-import { ProductVariantModule } from '../modules/product-variant/product-variant.module';
 import { CropModule } from '../modules/crop/crop.module';
 import { SubFamiliesSeeder } from './sub-family.seeder';
 import { SubFamilyModule } from '../modules/sub-family/sub-family.module';
@@ -51,7 +45,6 @@ seeder({
     ProductFamilyModule,
     ProductTypeModule,
     ProductBrandModule,
-    ProductVariantModule,
     CropModule,
     SubFamilyModule,
   ],
@@ -59,7 +52,6 @@ seeder({
   ProductBrandsSeeder,
   ProductFamiliesSeeder,
   ProductTypesSeeder,
-  ProductVariantsSeeder,
   CropsSeeder,
   SubFamiliesSeeder,
   ProductsSeeder,

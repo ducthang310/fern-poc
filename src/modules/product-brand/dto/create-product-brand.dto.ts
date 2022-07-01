@@ -1,13 +1,13 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { LanguageObject } from '../../../common/interfaces/common.interface';
+import { LocalisedValue } from '../../../common/interfaces/common.interface';
 import { Product } from '../../product/schemas/product.schema';
 
 export class CreateProductBrandDto {
   @ApiProperty({ example: { en: 'New name' } })
-  name: LanguageObject;
+  name: LocalisedValue;
 
   @ApiProperty({ example: { en: 'New description' } })
-  description: LanguageObject;
+  description: LocalisedValue;
 
   @ApiProperty({ example: ['https://cdn.google.com/image.jpg'] })
   imageUrls: string[];

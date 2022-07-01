@@ -1,6 +1,7 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 import { Factory } from 'nestjs-seeder';
+import { EntityStatus } from '../../../common/interfaces/common.interface';
 
 export type ProductBrandDocument = ProductBrand & Document;
 
@@ -20,6 +21,16 @@ export class ProductBrand {
   @Prop()
   // @Prop({ type: [{ type: MongooseSchema.Types.ObjectId, ref: 'Product' }] })
   products: string[];
+
+  @Factory((faker) =>
+    faker.random.arrayElement([
+      EntityStatus.ACTIVE,
+      EntityStatus.INACTIVE,
+      EntityStatus.APPROVED,
+    ]),
+  )
+  @Prop()
+  status: EntityStatus;
 }
 
 export const ProductBrandSchema = SchemaFactory.createForClass(ProductBrand);

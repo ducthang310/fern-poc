@@ -2,12 +2,11 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document, Schema as MongooseSchema } from 'mongoose';
 import {
   MasterLookup,
-  LanguageObject,
+  LocalisedValue,
   CompactObject,
   EntityStatus,
 } from '../../../common/interfaces/common.interface';
 import { Factory } from 'nestjs-seeder';
-import { VolumeMetric } from '../contants';
 
 export interface ProductVariant {
   sku: string;
@@ -26,26 +25,16 @@ export class Product {
   @Prop({
     type: MongooseSchema.Types.Mixed,
   })
-  name: LanguageObject;
-
-  @Factory((faker) => ({ en: faker.lorem.paragraph() }))
-  @Prop({
-    type: MongooseSchema.Types.Mixed,
-  })
-  description: LanguageObject;
+  name: LocalisedValue;
 
   @Prop()
   productBrands: MasterLookup[];
 
-  @Prop({
-    type: MongooseSchema.Types.Mixed,
-  })
-  productFamily: MasterLookup;
+  @Prop()
+  productFamilies: MasterLookup[];
 
-  @Prop({
-    type: MongooseSchema.Types.Mixed,
-  })
-  subFamily: MasterLookup;
+  @Prop()
+  subFamilies: MasterLookup[];
 
   @Prop()
   productTypes: MasterLookup[];
@@ -54,12 +43,14 @@ export class Product {
   @Prop()
   materialId: string;
 
-  @Factory((faker) => faker.random.number())
-  @Prop()
-  tenant: number;
+  @Factory((faker) => ({ en: faker.lorem.paragraph() }))
+  @Prop({
+    type: MongooseSchema.Types.Mixed,
+  })
+  description: LocalisedValue;
 
   @Factory((faker) => ({
-    id: faker.random.arrayElement([12, 13, 14, 15, 16, 17, 18]),
+    id: faker.random.number(),
     name: faker.address.countryCode(),
   }))
   @Prop({
@@ -68,7 +59,7 @@ export class Product {
   countryOfOrigin: CompactObject;
 
   @Factory((faker) => ({
-    id: faker.random.arrayElement([12, 13, 14, 15, 16, 17, 18]),
+    id: faker.random.number(),
     name: faker.commerce.productName(),
   }))
   @Prop({
@@ -76,90 +67,79 @@ export class Product {
   })
   manufacturer: CompactObject;
 
-  @Factory((faker) => ({
-    id: faker.random.arrayElement([12, 13, 14, 15, 16, 17, 18]),
-    name: faker.commerce.productName(),
-  }))
-  @Prop({
-    type: MongooseSchema.Types.Mixed,
-  })
-  applicationType: CompactObject;
-
   @Prop()
   crops: MasterLookup[];
 
-  @Factory((faker) => ({
-    id: faker.random.arrayElement([12, 13, 14, 15, 16, 17, 18]),
-    name: faker.address.countryCode(),
-  }))
-  @Prop({
-    type: MongooseSchema.Types.Mixed,
-  })
-  region: CompactObject;
-
-  @Factory((faker) => faker.address.countryCode())
+  @Factory((faker) => [
+    {
+      id: faker.random.number(),
+      name: faker.address.countryCode(),
+    },
+    {
+      id: faker.random.number(),
+      name: faker.address.countryCode(),
+    },
+  ])
   @Prop()
-  country: string;
+  regions: CompactObject[];
 
-  @Factory((faker) => faker.address.countryCode())
+  @Factory((faker) => [
+    {
+      id: faker.random.number(),
+      name: faker.address.countryCode(),
+    },
+    {
+      id: faker.random.number(),
+      name: faker.address.countryCode(),
+    },
+  ])
   @Prop()
-  ward: string;
+  countries: CompactObject[];
 
-  @Factory((faker) => ({
-    id: faker.random.arrayElement([12, 13, 14, 15, 16, 17, 18]),
-    name: faker.commerce.productName(),
-  }))
-  @Prop({
-    type: MongooseSchema.Types.Mixed,
-  })
-  initiative: CompactObject;
+  @Factory((faker) => [
+    {
+      id: faker.random.number(),
+      name: faker.address.countryCode(),
+    },
+    {
+      id: faker.random.number(),
+      name: faker.address.countryCode(),
+    },
+  ])
+  @Prop()
+  wards: CompactObject[];
 
-  @Factory((faker) => ({
-    id: faker.random.arrayElement([12, 13, 14, 15, 16, 17, 18]),
-    name: faker.commerce.productName(),
-  }))
-  @Prop({
-    type: MongooseSchema.Types.Mixed,
-  })
-  packagingType: CompactObject;
+  @Factory((faker) => [
+    {
+      sku: faker.random.words(2).toLowerCase().split(' ').join('-'),
+      packagingType: faker.random.words(),
+      volume: faker.random.words(),
+      photoUrls: [],
+      internalId: faker.random.words(),
+      status: faker.random.arrayElement([
+        EntityStatus.ACTIVE,
+        EntityStatus.INACTIVE,
+        EntityStatus.APPROVED,
+      ]),
+    },
+  ])
+  @Prop()
+  productVariants: ProductVariant[];
 
   @Prop()
   mediaUrls: string[];
-
-  @Factory((faker) => ({
-    sku: faker.random.words(6).toLowerCase().split(' ').join('-'),
-    packagingType: faker.random.words(),
-    volume: faker.random.words(),
-    photoUrls: [],
-    internalId: faker.random.words(),
-    status: faker.random.arrayElement([
-      EntityStatus.ACTIVE,
-      EntityStatus.INACTIVE,
-      EntityStatus.APPROVED,
-    ]),
-  }))
-  @Prop({
-    type: MongooseSchema.Types.Mixed,
-  })
-  productVariants: ProductVariant[];
-
-  @Factory((faker) =>
-    faker.random.arrayElement([
-      VolumeMetric.METRIC_1,
-      VolumeMetric.METRIC_2,
-      VolumeMetric.METRIC_3,
-    ]),
-  )
-  @Prop({
-    type: MongooseSchema.Types.Mixed,
-  })
-  volumeMetric: VolumeMetric;
 
   @Factory((faker) => faker.random.arrayElement([true, false]))
   @Prop()
   isMostPopular: boolean;
 
-  @Factory((faker) => faker.random.arrayElement([EntityStatus.ACTIVE, EntityStatus.INACTIVE, EntityStatus.APPROVED]))
+  @Factory((faker) =>
+    faker.random.arrayElement([
+      EntityStatus.ACTIVE,
+      EntityStatus.INACTIVE,
+      EntityStatus.APPROVED,
+    ]),
+  )
   @Prop()
   status: EntityStatus;
 }

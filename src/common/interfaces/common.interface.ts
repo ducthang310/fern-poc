@@ -14,12 +14,12 @@ export interface Language {
   nativeName: string;
 }
 
-export interface LanguageObject {
+export interface LocalisedValue {
   en: string;
   [countryCode: string]: string;
 }
 
-export interface MasterLookupWithLocalization extends LanguageObject {
+export interface MasterLookupWithLocalization extends LocalisedValue {
   id: string;
 }
 

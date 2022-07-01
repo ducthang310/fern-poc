@@ -3,6 +3,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { Seeder, DataFactory } from 'nestjs-seeder';
 import { ProductType } from '../modules/product-type/schemas/product-type.schema';
+import { EntityStatus } from '../common/interfaces/common.interface';
 
 @Injectable()
 export class ProductTypesSeeder implements Seeder {
@@ -15,22 +16,25 @@ export class ProductTypesSeeder implements Seeder {
     // const items = DataFactory.createForClass(ProductType).generate(2);
     const items: ProductType[] = [
       {
-        name: 'Type 1',
+        name: 'Yara type 1',
         description: 'Test description',
         imageUrls: [],
         products: [],
+        status: EntityStatus.ACTIVE,
       },
       {
-        name: 'Type 2',
+        name: 'Yara type 2',
         description: 'Test description',
         imageUrls: [],
         products: [],
+        status: EntityStatus.ACTIVE,
       },
       {
-        name: 'Type 3',
+        name: 'Yara type 3',
         description: 'Test description',
         imageUrls: [],
         products: [],
+        status: EntityStatus.ACTIVE,
       },
     ];
 
