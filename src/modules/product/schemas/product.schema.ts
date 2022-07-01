@@ -94,7 +94,7 @@ export class Product {
     },
   ])
   @Prop()
-  countries: CompactObject[];
+  counties: CompactObject[];
 
   @Factory((faker) => [
     {
