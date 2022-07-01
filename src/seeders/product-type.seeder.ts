@@ -16,21 +16,21 @@ export class ProductTypesSeeder implements Seeder {
     // const items = DataFactory.createForClass(ProductType).generate(2);
     const items: ProductType[] = [
       {
-        name: 'Yara type 1',
+        name: 'Yara product type 1',
         description: 'Test description',
         imageUrls: [],
         products: [],
         status: EntityStatus.ACTIVE,
       },
       {
-        name: 'Yara type 2',
+        name: 'Yara product type 2',
         description: 'Test description',
         imageUrls: [],
         products: [],
         status: EntityStatus.ACTIVE,
       },
       {
-        name: 'Yara type 3',
+        name: 'Yara product type 3',
         description: 'Test description',
         imageUrls: [],
         products: [],

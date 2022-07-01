@@ -20,7 +20,7 @@ export class SubFamiliesSeeder implements Seeder {
     const allFamilies = await this.productFamilyService.findAll();
     const items: SubFamily[] = [
       {
-        name: { en: 'Yara sub family 1' },
+        name: { en: 'Yara product sub family 1' },
         description: { en: 'Test description' },
         imageUrls: [],
         products: [],
@@ -28,7 +28,7 @@ export class SubFamiliesSeeder implements Seeder {
         status: EntityStatus.ACTIVE,
       },
       {
-        name: { en: 'Yara sub family 2' },
+        name: { en: 'Yara product sub family 2' },
         description: { en: 'Test description' },
         imageUrls: [],
         productFamilyId: null,
@@ -36,7 +36,7 @@ export class SubFamiliesSeeder implements Seeder {
         status: EntityStatus.ACTIVE,
       },
       {
-        name: { en: 'Yara sub family 3' },
+        name: { en: 'Yara product sub family 3' },
         description: { en: 'Test description' },
         imageUrls: [],
         products: [],

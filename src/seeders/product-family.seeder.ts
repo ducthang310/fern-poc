@@ -16,21 +16,21 @@ export class ProductFamiliesSeeder implements Seeder {
     // const items = DataFactory.createForClass(ProductFamily).generate(2);
     const items: ProductFamily[] = [
       {
-        name: { en: 'Yara family 1' },
+        name: { en: 'Yara product family 1' },
         description: { en: 'Test description' },
         imageUrls: [],
         products: [],
         status: EntityStatus.ACTIVE,
       },
       {
-        name: { en: 'Yara family 2' },
+        name: { en: 'Yara product family 2' },
         description: { en: 'Test description' },
         imageUrls: [],
         products: [],
         status: EntityStatus.ACTIVE,
       },
       {
-        name: { en: 'Yara family 3' },
+        name: { en: 'Yara product family 3' },
         description: { en: 'Test description' },
         imageUrls: [],
         products: [],
