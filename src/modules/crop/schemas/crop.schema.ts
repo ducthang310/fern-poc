@@ -16,7 +16,7 @@ export class Crop {
   name: LocalisedValue;
 
   @Prop()
-  imageUrls: string[];
+  imageUrl: string;
 
   @Prop()
   // @Prop({ type: [{ type: MongooseSchema.Types.ObjectId, ref: 'Product' }] })

@@ -7,7 +7,6 @@ import { ProductBrandService } from '../modules/product-brand/services/product-b
 import { ProductTypeService } from '../modules/product-type/services/product-type.service';
 import { ProductFamilyService } from '../modules/product-family/services/product-family.service';
 import { CropService } from '../modules/crop/services/crop.service';
-import { SubFamilyService } from '../modules/sub-family/services/sub-family.service';
 import { ProductService } from '../modules/product/services/product.service';
 
 @Injectable()
@@ -18,7 +17,6 @@ export class ProductsSeeder implements Seeder {
     private readonly productBrandService: ProductBrandService,
     private readonly productTypeService: ProductTypeService,
     private readonly productFamilyService: ProductFamilyService,
-    private readonly subFamilyService: SubFamilyService,
     private readonly cropService: CropService,
     private readonly productService: ProductService,
   ) {}
@@ -42,12 +40,6 @@ export class ProductsSeeder implements Seeder {
       name: item.name.en,
     }));
 
-    const allSubFamilies = await this.subFamilyService.findAll();
-    const subFamilies = allSubFamilies.map((item) => ({
-      id: item._id,
-      name: item.name.en,
-    }));
-
     const allCrops = await this.cropService.findAll();
     const crops = allCrops.map((item) => ({
       id: item._id,
@@ -56,13 +48,22 @@ export class ProductsSeeder implements Seeder {
 
     const items = DataFactory.createForClass(Product)
       .generate(5)
-      .map((item) => ({
+      .map((item, index) => ({
         ...item,
+        name: {
+          en: `Yara Product ${index + 1} - name in English`,
+          te: `Yara Product ${index + 1} - name in Telugu`,
+        },
         productBrands: brands,
         productTypes: types,
         productFamilies: families,
-        subFamilies: subFamilies,
         crops: crops,
+        auditTrail: {
+          createdBy: 'Yara administrator',
+          createdAt: new Date().toISOString(),
+          updatedBy: 'Yara administrator',
+          updatedAt: new Date().toISOString(),
+        },
       }));
 
     await this.productModel.insertMany(items);
@@ -71,7 +72,6 @@ export class ProductsSeeder implements Seeder {
     await this.productBrandService.updateMany({ products: productIds });
     await this.productTypeService.updateMany({ products: productIds });
     await this.productFamilyService.updateMany({ products: productIds });
-    await this.subFamilyService.updateMany({ products: productIds });
     await this.cropService.updateMany({ products: productIds });
     return true;
   }

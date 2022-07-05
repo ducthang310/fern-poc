@@ -4,6 +4,7 @@ import { Model } from 'mongoose';
 import { Seeder, DataFactory } from 'nestjs-seeder';
 import { ProductType } from '../modules/product-type/schemas/product-type.schema';
 import { EntityStatus } from '../common/interfaces/common.interface';
+import { sample } from 'lodash';
 
 @Injectable()
 export class ProductTypesSeeder implements Seeder {
@@ -14,27 +15,32 @@ export class ProductTypesSeeder implements Seeder {
 
   async seed(): Promise<any> {
     // const items = DataFactory.createForClass(ProductType).generate(2);
+    const status = [
+      EntityStatus.ACTIVE,
+      EntityStatus.INACTIVE,
+      EntityStatus.APPROVED,
+    ];
     const items: ProductType[] = [
       {
         name: 'Yara product type 1',
         description: 'Test description',
-        imageUrls: [],
+        imageUrl: '',
         products: [],
-        status: EntityStatus.ACTIVE,
+        status: sample(status),
       },
       {
         name: 'Yara product type 2',
         description: 'Test description',
-        imageUrls: [],
+        imageUrl: '',
         products: [],
-        status: EntityStatus.ACTIVE,
+        status: sample(status),
       },
       {
         name: 'Yara product type 3',
         description: 'Test description',
-        imageUrls: [],
+        imageUrl: '',
         products: [],
-        status: EntityStatus.ACTIVE,
+        status: sample(status),
       },
     ];
 

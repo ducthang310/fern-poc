@@ -18,7 +18,7 @@ export class ProductFamily {
   description: LocalisedValue;
 
   @Prop()
-  imageUrls: string[];
+  mediaUrls: string[];
 
   @Prop()
   // @Prop({ type: [{ type: MongooseSchema.Types.ObjectId, ref: 'Product' }] })

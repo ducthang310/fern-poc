@@ -7,20 +7,23 @@ import {
   EntityStatus,
 } from '../../../common/interfaces/common.interface';
 import { Factory } from 'nestjs-seeder';
-
-export interface ProductVariant {
-  sku: string;
-  packagingType: string;
-  volume: string;
-  photoUrls: string[];
-  internalId: string;
-  status: EntityStatus;
-}
+import { Metric } from '../contants';
+import { sample } from 'lodash';
+import { AuditTrail, ProductVariant } from '../product.interfaces';
 
 export type ProductDocument = Product & Document;
 
 @Schema({ timestamps: true })
 export class Product {
+  @Factory((faker) => ({
+    id: faker.random.number(),
+    name: faker.commerce.productName(),
+  }))
+  @Prop({
+    type: MongooseSchema.Types.Mixed,
+  })
+  productTenant: MasterLookup;
+
   @Factory((faker) => ({ en: faker.commerce.productName() }))
   @Prop({
     type: MongooseSchema.Types.Mixed,
@@ -32,9 +35,6 @@ export class Product {
 
   @Prop()
   productFamilies: MasterLookup[];
-
-  @Prop()
-  subFamilies: MasterLookup[];
 
   @Prop()
   productTypes: MasterLookup[];
@@ -111,16 +111,10 @@ export class Product {
 
   @Factory((faker) => [
     {
-      sku: faker.random.words(2).toLowerCase().split(' ').join('-'),
       packagingType: faker.random.words(),
       volume: faker.random.words(),
-      photoUrls: [],
-      internalId: faker.random.words(),
-      status: faker.random.arrayElement([
-        EntityStatus.ACTIVE,
-        EntityStatus.INACTIVE,
-        EntityStatus.APPROVED,
-      ]),
+      metric: sample([Metric.METRIC_1, Metric.METRIC_2, Metric.METRIC_3]),
+      mediaUrls: [],
     },
   ])
   @Prop()
@@ -142,6 +136,11 @@ export class Product {
   )
   @Prop()
   status: EntityStatus;
+
+  @Prop({
+    type: MongooseSchema.Types.Mixed,
+  })
+  auditTrail: AuditTrail;
 }
 
 export const ProductSchema = SchemaFactory.createForClass(Product);

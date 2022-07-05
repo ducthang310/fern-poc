@@ -16,20 +16,29 @@ export class CropsSeeder implements Seeder {
     // const items = DataFactory.createForClass(Crop).generate(2);
     const items: Crop[] = [
       {
-        name: { en: 'Crop 1' },
-        imageUrls: [],
+        name: {
+          en: 'Crop 1 - name in English',
+          te: 'Crop 1 - name in Telugu',
+        },
+        imageUrl: '',
         products: [],
         status: EntityStatus.ACTIVE,
       },
       {
-        name: { en: 'Crop 2' },
-        imageUrls: [],
+        name: {
+          en: 'Crop 2 - name in English',
+          te: 'Crop 2 - name in Telugu',
+        },
+        imageUrl: '',
         products: [],
         status: EntityStatus.ACTIVE,
       },
       {
-        name: { en: 'Crop 3' },
-        imageUrls: [],
+        name: {
+          en: 'Crop 3 - name in English',
+          te: 'Crop 3 - name in Telugu',
+        },
+        imageUrl: '',
         products: [],
         status: EntityStatus.ACTIVE,
       },
