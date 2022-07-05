@@ -10,10 +10,8 @@ export type CropDocument = Crop & Document;
 
 @Schema({ timestamps: true, collection: 'crops' })
 export class Crop {
-  @Prop({
-    type: MongooseSchema.Types.Mixed,
-  })
-  name: LocalisedValue;
+  @Prop()
+  name: string;
 
   @Prop()
   imageUrl: string;

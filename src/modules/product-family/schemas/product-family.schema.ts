@@ -7,10 +7,8 @@ export type ProductFamilyDocument = ProductFamily & Document;
 
 @Schema({ timestamps: true, collection: 'productFamilies' })
 export class ProductFamily {
-  @Prop({
-    type: MongooseSchema.Types.Mixed,
-  })
-  name: LocalisedValue;
+  @Prop()
+  name: string;
 
   @Prop({
     type: MongooseSchema.Types.Mixed,

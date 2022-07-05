@@ -15,10 +15,6 @@ export type ProductDocument = Product & Document;
 
 @Schema({ timestamps: true })
 export class Product {
-  @Factory((faker) => ({
-    id: faker.random.number(),
-    name: faker.commerce.productName(),
-  }))
   @Prop({
     type: MongooseSchema.Types.Mixed,
   })

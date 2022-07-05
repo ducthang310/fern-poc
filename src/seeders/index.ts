@@ -12,6 +12,8 @@ import { ProductFamilyModule } from '../modules/product-family/product-family.mo
 import { ProductTypeModule } from '../modules/product-type/product-type.module';
 import { ProductBrandModule } from '../modules/product-brand/product-brand.module';
 import { CropModule } from '../modules/crop/crop.module';
+import { TenantsSeeder } from './tenant.seeder';
+import { TenantModule } from '../modules/tenant/tenant.module';
 
 seeder({
   imports: [
@@ -44,11 +46,13 @@ seeder({
     ProductTypeModule,
     ProductBrandModule,
     CropModule,
+    TenantModule,
   ],
 }).run([
   ProductBrandsSeeder,
   ProductFamiliesSeeder,
   ProductTypesSeeder,
   CropsSeeder,
+  TenantsSeeder,
   ProductsSeeder,
 ]);

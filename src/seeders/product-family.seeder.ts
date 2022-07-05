@@ -16,30 +16,21 @@ export class ProductFamiliesSeeder implements Seeder {
     // const items = DataFactory.createForClass(ProductFamily).generate(2);
     const items: ProductFamily[] = [
       {
-        name: {
-          en: 'Yara product family 1 - name in English',
-          te: 'Yara product family 1 - name in Telugu',
-        },
+        name: 'Yara product family 1',
         description: { en: 'Test description' },
         mediaUrls: [],
         products: [],
         status: EntityStatus.ACTIVE,
       },
       {
-        name: {
-          en: 'Yara product family 2 - name in English',
-          te: 'Yara product family 2 - name in Telugu',
-        },
+        name: 'Yara product family 2',
         description: { en: 'Test description' },
         mediaUrls: [],
         products: [],
         status: EntityStatus.ACTIVE,
       },
       {
-        name: {
-          en: 'Yara product family 3 - name in English',
-          te: 'Yara product family 3 - name in Telugu',
-        },
+        name: 'Yara product family 3',
         description: { en: 'Test description' },
         mediaUrls: [],
         products: [],

@@ -8,6 +8,8 @@ import { ProductTypeService } from '../modules/product-type/services/product-typ
 import { ProductFamilyService } from '../modules/product-family/services/product-family.service';
 import { CropService } from '../modules/crop/services/crop.service';
 import { ProductService } from '../modules/product/services/product.service';
+import { TenantService } from '../modules/tenant/services/tenant.service';
+import { sample } from 'lodash';
 
 @Injectable()
 export class ProductsSeeder implements Seeder {
@@ -18,6 +20,7 @@ export class ProductsSeeder implements Seeder {
     private readonly productTypeService: ProductTypeService,
     private readonly productFamilyService: ProductFamilyService,
     private readonly cropService: CropService,
+    private readonly tenantService: TenantService,
     private readonly productService: ProductService,
   ) {}
 
@@ -37,19 +40,26 @@ export class ProductsSeeder implements Seeder {
     const allFamilies = await this.productFamilyService.findAll();
     const families = allFamilies.map((item) => ({
       id: item._id,
-      name: item.name.en,
+      name: item.name,
     }));
 
     const allCrops = await this.cropService.findAll();
     const crops = allCrops.map((item) => ({
       id: item._id,
-      name: item.name.en,
+      name: item.name,
+    }));
+
+    const allTenants = await this.tenantService.findAll();
+    const tenants = allTenants.map((item) => ({
+      id: item._id,
+      name: item.name,
     }));
 
     const items = DataFactory.createForClass(Product)
       .generate(5)
       .map((item, index) => ({
         ...item,
+        productTenant: sample(tenants),
         name: {
           en: `Yara Product ${index + 1} - name in English`,
           te: `Yara Product ${index + 1} - name in Telugu`,
