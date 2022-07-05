@@ -12,8 +12,6 @@ import { ProductFamilyModule } from '../modules/product-family/product-family.mo
 import { ProductTypeModule } from '../modules/product-type/product-type.module';
 import { ProductBrandModule } from '../modules/product-brand/product-brand.module';
 import { CropModule } from '../modules/crop/crop.module';
-import { SubFamiliesSeeder } from './sub-family.seeder';
-import { SubFamilyModule } from '../modules/sub-family/sub-family.module';
 
 seeder({
   imports: [
@@ -46,13 +44,11 @@ seeder({
     ProductTypeModule,
     ProductBrandModule,
     CropModule,
-    SubFamilyModule,
   ],
 }).run([
   ProductBrandsSeeder,
   ProductFamiliesSeeder,
   ProductTypesSeeder,
   CropsSeeder,
-  SubFamiliesSeeder,
   ProductsSeeder,
 ]);
