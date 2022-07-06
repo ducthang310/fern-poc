@@ -4,6 +4,7 @@ import { json, urlencoded } from 'body-parser';
 import getLogLevels from './common/utilities/logger';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import mongoose from 'mongoose';
+import { ProductService } from './modules/product/services/product.service';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, {
@@ -14,6 +15,9 @@ async function bootstrap() {
   app.enableCors();
 
   process.env.NODE_ENV !== 'production' && mongoose.set('debug', true);
+
+  const productService = app.get(ProductService);
+  productService.subscribeStream();
 
   const config = new DocumentBuilder()
     .setTitle('FERN API')

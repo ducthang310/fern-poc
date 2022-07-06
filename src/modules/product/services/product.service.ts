@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
 import { CreateProductDto } from '../dto/create-product.dto';
 import { UpdateProductDto } from '../dto/update-product.dto';
 import { InjectModel } from '@nestjs/mongoose';
@@ -30,5 +30,12 @@ export class ProductService {
 
   remove(id: number) {
     return `This action removes a #${id} product`;
+  }
+
+  subscribeStream() {
+    this.productModel.watch().on('change', (data) => {
+      Logger.debug('change from Product collection');
+      Logger.debug(data);
+    });
   }
 }
