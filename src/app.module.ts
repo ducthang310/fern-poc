@@ -15,6 +15,8 @@ import { ProductBrandModule } from './modules/product-brand/product-brand.module
 import { ProductVariantModule } from './modules/product-variant/product-variant.module';
 import { CropModule } from './modules/crop/crop.module';
 import EnvironmentVariables from './common/interfaces/configuration';
+import { FileModule } from './modules/file/file.module';
+import { TenantModule } from './modules/tenant/tenant.module';
 
 @Module({
   imports: [
@@ -47,6 +49,8 @@ import EnvironmentVariables from './common/interfaces/configuration';
     ProductBrandModule,
     ProductVariantModule,
     CropModule,
+    TenantModule,
+    FileModule,
   ],
   controllers: [AppController],
   providers: [
