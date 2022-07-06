@@ -3,7 +3,7 @@ import { CreateProductDto } from '../dto/create-product.dto';
 import { UpdateProductDto } from '../dto/update-product.dto';
 import { InjectModel } from '@nestjs/mongoose';
 import { Product, ProductDocument } from '../schemas/product.schema';
-import { Model } from 'mongoose';
+import { FilterQuery, Model } from 'mongoose';
 
 @Injectable()
 export class ProductService {
@@ -16,12 +16,12 @@ export class ProductService {
     return createdProduct.save();
   }
 
-  findAll() {
-    return this.productModel.find().exec();
+  findAll(filter?: FilterQuery<Product>) {
+    return this.productModel.find(filter).exec();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} product`;
+  findOne(id: string) {
+    return this.productModel.findById(id).exec();
   }
 
   update(id: number, updateProductDto: UpdateProductDto) {
