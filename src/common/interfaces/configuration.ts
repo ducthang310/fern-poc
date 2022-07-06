@@ -14,7 +14,4 @@ export default interface EnvironmentVariables {
   AWS_S3_BUCKET_CDN: string;
   APP_CDN_URL: string;
   AWS_REGION: string;
-
-  AWS_SES_MAIL_FROM_ADDRESS: string;
-  AWS_SES_MAIL_FROM_NAME: string;
 }
