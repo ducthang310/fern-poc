@@ -29,10 +29,10 @@ export class CreateCollectionProductTypes1655897849214 implements MigrationInter
               bsonType: 'string',
             },
             createdAt: {
-              bsonType: 'timestamp',
+              bsonType: 'date',
             },
             updatedAt: {
-              bsonType: 'timestamp',
+              bsonType: 'date',
             },
           },
         },

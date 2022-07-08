@@ -23,10 +23,10 @@ export class CreateCollectionProductBrands1655897837776 implements MigrationInte
               bsonType: 'string',
             },
             createdAt: {
-              bsonType: 'timestamp',
+              bsonType: 'date',
             },
             updatedAt: {
-              bsonType: 'timestamp',
+              bsonType: 'date',
             },
           },
         },

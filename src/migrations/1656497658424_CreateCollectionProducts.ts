@@ -246,21 +246,21 @@ export class CreateCollectionProducts1656497658424 implements MigrationInterface
                   bsonType: 'string',
                 },
                 createdAt: {
-                  bsonType: 'timestamp',
+                  bsonType: 'date',
                 },
                 updatedBy: {
                   bsonType: 'string',
                 },
                 updatedAt: {
-                  bsonType: 'timestamp',
+                  bsonType: 'date',
                 },
               },
             },
             createdAt: {
-              bsonType: 'timestamp',
+              bsonType: 'date',
             },
             updatedAt: {
-              bsonType: 'timestamp',
+              bsonType: 'date',
             },
           },
         },

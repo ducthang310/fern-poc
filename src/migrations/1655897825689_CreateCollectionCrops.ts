@@ -26,10 +26,10 @@ export class CreateCollectionCrops1655897825689 implements MigrationInterface {
               bsonType: 'string',
             },
             createdAt: {
-              bsonType: 'timestamp',
+              bsonType: 'date',
             },
             updatedAt: {
-              bsonType: 'timestamp',
+              bsonType: 'date',
             },
           },
         },

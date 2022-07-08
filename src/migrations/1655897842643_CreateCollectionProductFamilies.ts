@@ -41,10 +41,10 @@ export class CreateCollectionProductFamilies1655897842643 implements MigrationIn
               bsonType: 'string',
             },
             createdAt: {
-              bsonType: 'timestamp',
+              bsonType: 'date',
             },
             updatedAt: {
-              bsonType: 'timestamp',
+              bsonType: 'date',
             },
           },
         },
