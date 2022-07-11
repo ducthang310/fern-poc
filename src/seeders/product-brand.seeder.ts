@@ -3,10 +3,8 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { Seeder } from 'nestjs-seeder';
 import { ProductBrand } from '../modules/product-brand/schemas/product-brand.schema';
-import { EntityStatus } from '../common/interfaces/common.interface';
-import { sample } from 'lodash';
-import { readFileSync } from 'fs';
 import { BaseSeeder } from './base.seeder';
+import { EntityStatus } from '../common/interfaces/common.interface';
 
 @Injectable()
 export class ProductBrandsSeeder extends BaseSeeder implements Seeder {
@@ -41,34 +39,27 @@ export class ProductBrandsSeeder extends BaseSeeder implements Seeder {
     //   },
     // ];
 
-    const filePath = './databases/seed-data/product-brands.json';
-    let items: any[];
-    let errorMessage = "There's no items on the file";
-    try {
-      const data = readFileSync(filePath, 'utf8');
-      items = JSON.parse(data);
-    } catch (e) {
-      errorMessage = e.toString();
-    }
-    if (!items || !items.length) {
-      // Create a error file
-      await this.createErrorFile(filePath, errorMessage);
-      return;
-    }
-
+    const items = await this.getData('product-brands.json');
     const failedItems = [];
-    for (const item of items) {
+    for (const name of items) {
       try {
-        await this.productBrandModel.create(item);
+        await this.productBrandModel.create({
+          name,
+          products: [],
+          status: EntityStatus.ACTIVE,
+        });
       } catch (e) {
         failedItems.push({
-          data: item,
+          data: name,
           error: e && e.toString(),
         });
       }
     }
     if (failedItems.length) {
-      await this.createErrorFile(filePath, JSON.stringify(failedItems));
+      await this.createErrorFile(
+        'product-brands.json',
+        JSON.stringify(failedItems),
+      );
       return;
     }
 

@@ -1,0 +1,113 @@
+{
+  "status": "SUCCESS",
+  "errors": {},
+  "data": {
+    "total": 7,
+    "items": [
+      {
+        "id": 3,
+        "categoryName": "YaraLiva",
+        "imageUrl": "OnlineShop/productFamily/yara_liva.png",
+        "productCategoryDescription": "YaraLiva fertilisers are a range of calcium nitrate based fertilisers combining fast acting nitrate nitrogen alongside strength-building calcium and boron, designed for high value quality field crops to improve the size, strength, appearance and importantly marketable yield.",
+        "created_at": "2021-11-15T12:15:18.000Z",
+        "updated_at": "2021-11-15T12:15:18.000Z",
+        "productIds": [
+          45,
+          42
+        ]
+      },
+      {
+        "id": 4,
+        "categoryName": "YaraMila",
+        "imageUrl": "OnlineShop/productFamily/yara_mila.png",
+        "productCategoryDescription": "YaraMila NPK fertilisers contain combinations of nitrogen, phosphorus, potassium and in most cases sulphur too – the most essential plant nutrients – designed to meet specific crop requirements to maximize crop yield and quality.",
+        "created_at": "2021-11-15T12:15:19.000Z",
+        "updated_at": "2021-11-15T12:15:19.000Z",
+        "productIds": [
+          36,
+          37,
+          38
+        ]
+      },
+      {
+        "id": 5,
+        "categoryName": "YaraTera",
+        "imageUrl": "OnlineShop/productFamily/yara_tera.png",
+        "productCategoryDescription": "YaraTera includes a comprehensive range of fully water-soluble products, including NPKs, straights, chelates, liquid fertilizers and biostimulants.\nThe YaraTera products are supported by Yara’s vast knowledge of application strategy, fertigation training programs and a set of tools and services to help farmers with everyday operations.",
+        "created_at": "2021-11-15T12:15:21.000Z",
+        "updated_at": "2021-11-15T12:15:21.000Z",
+        "productIds": [
+          12,
+          10,
+          46
+        ]
+      },
+      {
+        "id": 6,
+        "categoryName": "YaraTera Deltaspray",
+        "imageUrl": "OnlineShop/productFamily/yara_tera_delta_spray.png",
+        "productCategoryDescription": "YaraTera Deltaspray is a range of fully water soluble NPK fertilisers.Due to its perfect physical properties YaraTera Deltaspray fertilizers can be used in all types of fertigation systems and in various crops in soil as well as for foliar application.",
+        "created_at": "2021-11-15T12:15:21.000Z",
+        "updated_at": "2021-11-15T12:15:21.000Z",
+        "productIds": [
+          27,
+          28,
+          29,
+          47
+        ]
+      },
+      {
+        "id": 7,
+        "categoryName": "YaraTera Krista",
+        "imageUrl": "OnlineShop/productFamily/yara_tera_krista.png",
+        "productCategoryDescription": "The YaraTera KRISTA™ range of fertilisers are fully water-soluble 'straight' fertilisers. They are free-flowing and dissolve quickly in water without any residues.",
+        "created_at": "2021-11-15T12:15:19.000Z",
+        "updated_at": "2021-11-15T12:15:19.000Z",
+        "productIds": [
+          30,
+          1,
+          33,
+          35,
+          31,
+          34,
+          32
+        ]
+      },
+      {
+        "id": 8,
+        "categoryName": "YaraTera KRISTALON",
+        "imageUrl": "OnlineShop/productFamily/yara_tera_kristalon.png",
+        "productCategoryDescription": "The YaraTera KRISTALON range of fertilisers are fully water-soluble NPK 'all-in-one' fertilisers for liquid feeding which contain all the required nutrients together with a full range of chelated micronutrients and are ideal for all irrigation systems - drip, tape, sprinkler or pivot. All KRISTALON products dissolve quickly and without any residue.",
+        "created_at": "2021-11-15T12:15:20.000Z",
+        "updated_at": "2021-11-15T12:15:20.000Z",
+        "productIds": [
+          39,
+          41,
+          40,
+          43
+        ]
+      },
+      {
+        "id": 9,
+        "categoryName": "YaraVita",
+        "imageUrl": "OnlineShop/productFamily/yara_vita.png",
+        "productCategoryDescription": "YaraVita crop micronutrient fertilisers developed specifically to target the leaf or fruit and to deliver a specific nutrient or nutrient mix exactly when and where the crop needs it, boosting crop performance by overcoming deficiencies.",
+        "created_at": "2021-11-15T12:15:20.000Z",
+        "updated_at": "2021-11-15T12:15:20.000Z",
+        "productIds": [
+          6,
+          14,
+          15,
+          4,
+          2,
+          3,
+          5,
+          13,
+          17,
+          44,
+          78
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,217 @@
+{
+  "status": "SUCCESS",
+  "errors": {},
+  "data": {
+    "total": 30,
+    "items": [
+      {
+        "cropId": "63cd0d7a-ebc3-48cf-9ea2-f631d598941e",
+        "cropCode": "paddy",
+        "cropName": "Paddy",
+        "cropImage": "OnlineShop/crops/paddy.png",
+        "cropEmoji": "",
+        "translations": [
+          {
+            "language": "en",
+            "localName": "Paddy"
+          },
+          {
+            "language": "hi",
+            "localName": "धान"
+          },
+          {
+            "language": "mr",
+            "localName": "भात"
+          }
+        ]
+      },
+      {
+        "cropId": "83b32e1c-9200-4a6b-a787-c9f545ca7b01",
+        "cropCode": "wheat",
+        "cropName": "Wheat",
+        "cropImage": "OnlineShop/crops/wheat.png",
+        "cropEmoji": "",
+        "translations": [
+          {
+            "language": "en",
+            "localName": "Wheat"
+          },
+          {
+            "language": "hi",
+            "localName": "गेहूँ"
+          },
+          {
+            "language": "mr",
+            "localName": "गहू"
+          }
+        ]
+      },
+      {
+        "cropId": "8544ee50-b1f0-47ea-a40f-ea1d76398629",
+        "cropCode": "sugarcane",
+        "cropName": "Sugarcane",
+        "cropImage": "OnlineShop/crops/potato.png",
+        "cropEmoji": "",
+        "translations": [
+          {
+            "language": "en",
+            "localName": "Sugarcane"
+          },
+          {
+            "language": "hi",
+            "localName": "गन्ना"
+          },
+          {
+            "language": "mr",
+            "localName": "ऊस"
+          }
+        ]
+      },
+      {
+        "cropId": "d2adcd1e-6506-4e2a-84d2-c29b4f64db01",
+        "cropCode": "grape",
+        "cropName": "Grapes",
+        "cropImage": "OnlineShop/crops/grapes.png",
+        "cropEmoji": "",
+        "translations": [
+          {
+            "language": "en",
+            "localName": "Grape"
+          },
+          {
+            "language": "hi",
+            "localName": "अंगूर"
+          },
+          {
+            "language": "mr",
+            "localName": "द्राक्ष"
+          }
+        ]
+      },
+      {
+        "cropId": "2ddd0dd5-05ac-43a4-82a8-7623390fed24",
+        "cropCode": "coffee",
+        "cropName": "Coffee",
+        "cropImage": "OnlineShop/crops/coffee.png",
+        "cropEmoji": "",
+        "translations": [
+          {
+            "language": "en",
+            "localName": "Coffee"
+          },
+          {
+            "language": "hi",
+            "localName": "कॉफ़ी"                    },
+          {
+            "language": "mr",
+            "localName": "कॉफी"
+          }
+        ]
+      },
+      {
+        "cropId": "32152a11-caa6-4822-89f9-12b7160bc804",
+        "cropCode": "arecanut",
+        "cropName": "Arecanut",
+        "cropImage": "OnlineShop/crops/arecanut.png",
+        "cropEmoji": "",
+        "translations": [
+          {
+            "language": "en",
+            "localName": "Arecanut"
+          },
+          {
+            "language": "hi",
+            "localName": "सुपारी"
+          },
+          {
+            "language": "mr",
+            "localName": "सुपारी"
+          }
+        ]
+      },
+      {
+        "cropId": "f4eb96b9-97df-4027-9000-114eb981dce9",
+        "cropCode": "apple",
+        "cropName": "Apple",
+        "cropImage": "OnlineShop/crops/apple.png",
+        "cropEmoji": "",
+        "translations": [
+          {
+            "language": "mr",
+            "localName": "कपास"
+          },
+          {
+            "language": "hi",
+            "localName": "सेब"
+          },
+          {
+            "language": "en",
+            "localName": "Apple"
+          }
+        ]
+      },
+      {
+        "cropId": "3175cf91-0929-480a-881b-01105ce42d88",
+        "cropCode": "kinnow",
+        "cropName": "Kinnow",
+        "cropImage": "OnlineShop/crops/kinnow.png",
+        "cropEmoji": "",
+        "translations": [
+          {
+            "language": "en",
+            "localName": "kinnow"
+          },
+          {
+            "language": "hi",
+            "localName": "किन्नू"
+          },
+          {
+            "language": "mr",
+            "localName": "किन्नो"
+          }
+        ]
+      },
+      {
+        "cropId": "2e58eb11-57d8-4130-8593-d10072ac2163",
+        "cropCode": "onion",
+        "cropName": "Onion",
+        "cropImage": "OnlineShop/crops/onion.png",
+        "cropEmoji": "",
+        "translations": [
+          {
+            "language": "en",
+            "localName": "Onion"
+          },
+          {
+            "language": "hi",
+            "localName": "प्याज़"                    },
+          {
+            "language": "mr",
+            "localName": "कांदा"
+          }
+        ]
+      },
+      {
+        "cropId": "5891cb6b-177d-44cc-9fd9-6ab89f8fb4b3",
+        "cropCode": "chili",
+        "cropName": "Chili",
+        "cropImage": "OnlineShop/crops/chili.png",
+        "cropEmoji": "",
+        "translations": [
+          {
+            "language": "en",
+            "localName": "Chili"
+          },
+          {
+            "language": "hi",
+            "localName":"मिर्च"
+          },
+          {
+            "language": "mr",
+            "localName":"मिरर्ची"
+          }
+        ]
+      }
+    ]
+  }
+}

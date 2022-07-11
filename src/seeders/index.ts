@@ -50,9 +50,9 @@ seeder({
   ],
 }).run([
   ProductBrandsSeeder,
-  ProductFamiliesSeeder,
-  ProductTypesSeeder,
-  CropsSeeder,
-  TenantsSeeder,
-  ProductsSeeder,
+  // ProductFamiliesSeeder,
+  // ProductTypesSeeder,
+  // CropsSeeder,
+  // TenantsSeeder,
+  // ProductsSeeder,
 ]);

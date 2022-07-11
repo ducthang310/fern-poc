@@ -4,38 +4,45 @@ import { Model } from 'mongoose';
 import { Seeder } from 'nestjs-seeder';
 import { Crop } from '../modules/crop/schemas/crop.schema';
 import { EntityStatus } from '../common/interfaces/common.interface';
+import { BaseSeeder } from './base.seeder';
 
 @Injectable()
-export class CropsSeeder implements Seeder {
+export class CropsSeeder extends BaseSeeder implements Seeder {
   constructor(
     @InjectModel(Crop.name)
     private readonly cropModel: Model<Crop>,
-  ) {}
+  ) {
+    super();
+  }
 
   async seed(): Promise<any> {
-    // const items = DataFactory.createForClass(Crop).generate(2);
-    const items: Crop[] = [
-      {
-        name: 'Crop 1',
-        imageUrl: '',
-        products: [],
-        status: EntityStatus.ACTIVE,
-      },
-      {
-        name: 'Crop 2',
-        imageUrl: '',
-        products: [],
-        status: EntityStatus.ACTIVE,
-      },
-      {
-        name: 'Crop 3',
-        imageUrl: '',
-        products: [],
-        status: EntityStatus.ACTIVE,
-      },
-    ];
+    const data = await this.getData('product-families.json');
+    const items: any[] = data.data.items;
+    const failedItems = [];
+    for (const item of items) {
+      try {
+        await this.cropModel.create({
+          name: item.cropName,
+          mediaUrls: [item.imageUrl],
+          products: [],
+          status: EntityStatus.ACTIVE,
+        });
+      } catch (e) {
+        failedItems.push({
+          data: item.cropName,
+          error: e && e.toString(),
+        });
+      }
+    }
+    if (failedItems.length) {
+      await this.createErrorFile(
+        'product-families.json',
+        JSON.stringify(failedItems),
+      );
+      return;
+    }
 
-    return this.cropModel.insertMany(items);
+    return;
   }
 
   async drop(): Promise<any> {

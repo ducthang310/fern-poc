@@ -1,16 +1,10 @@
 [
-  {
-    "name": "Yara product brand 1",
-    "products": [],
-    "status": "active"
-  },
-  {
-    "name": "Yara product brand 2",
-    "products": [],
-    "status": "active"
-  },
-  {
-    "products": [],
-    "status": "inactive"
-  }
+  "Agripotash",
+  "Biotrac",
+  "Botrac",
+  "Bud Builder",
+  "Cabtrac",
+  "Calcinit",
+  "Deltasoray (Npk 05:09:35)",
+  "Zintrac"
 ]

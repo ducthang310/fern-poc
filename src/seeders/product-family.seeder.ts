@@ -4,41 +4,46 @@ import { Model } from 'mongoose';
 import { Seeder, DataFactory } from 'nestjs-seeder';
 import { ProductFamily } from '../modules/product-family/schemas/product-family.schema';
 import { EntityStatus } from '../common/interfaces/common.interface';
+import { BaseSeeder } from './base.seeder';
 
 @Injectable()
-export class ProductFamiliesSeeder implements Seeder {
+export class ProductFamiliesSeeder extends BaseSeeder implements Seeder {
   constructor(
     @InjectModel(ProductFamily.name)
     private readonly productFamilyModel: Model<ProductFamily>,
-  ) {}
+  ) {
+    super();
+  }
 
   async seed(): Promise<any> {
-    // const items = DataFactory.createForClass(ProductFamily).generate(2);
-    const items: ProductFamily[] = [
-      {
-        name: 'Yara product family 1',
-        description: { en: 'Test description' },
-        mediaUrls: [],
-        products: [],
-        status: EntityStatus.ACTIVE,
-      },
-      {
-        name: 'Yara product family 2',
-        description: { en: 'Test description' },
-        mediaUrls: [],
-        products: [],
-        status: EntityStatus.ACTIVE,
-      },
-      {
-        name: 'Yara product family 3',
-        description: { en: 'Test description' },
-        mediaUrls: [],
-        products: [],
-        status: EntityStatus.ACTIVE,
-      },
-    ];
+    const data = await this.getData('product-families.json');
+    const items: any[] = data.data.items;
+    const failedItems = [];
+    for (const item of items) {
+      try {
+        await this.productFamilyModel.create({
+          name: item.categoryName,
+          description: { en: item.productCategoryDescription },
+          mediaUrls: [item.imageUrl],
+          products: [],
+          status: EntityStatus.ACTIVE,
+        });
+      } catch (e) {
+        failedItems.push({
+          data: item.categoryName,
+          error: e && e.toString(),
+        });
+      }
+    }
+    if (failedItems.length) {
+      await this.createErrorFile(
+        'product-families.json',
+        JSON.stringify(failedItems),
+      );
+      return;
+    }
 
-    return this.productFamilyModel.insertMany(items);
+    return;
   }
 
   async drop(): Promise<any> {
